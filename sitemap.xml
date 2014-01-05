@@ -1,15 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>
+            http://LiKethoughtworks.github.io/blog/2014/01/05/how-to-get-url-from-client-in-aspnet/
+        </loc>
+        <lastmod>2014-01-05T15:11:15+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://LiKethoughtworks.github.io/blog/archives/</loc>
-        <lastmod>2014-01-05T14:51:13+08:00</lastmod>
+        <lastmod>2014-01-05T15:11:15+08:00</lastmod>
     </url>
     <url>
         <loc>http://LiKethoughtworks.github.io/</loc>
-        <lastmod>2014-01-05T14:51:13+08:00</lastmod>
+        <lastmod>2014-01-05T15:11:15+08:00</lastmod>
     </url>
     <url>
         <loc>http://LiKethoughtworks.github.io/robots.txt</loc>
-        <lastmod>2014-01-05T14:51:13+08:00</lastmod>
+        <lastmod>2014-01-05T15:02:40+08:00</lastmod>
     </url>
 </urlset>

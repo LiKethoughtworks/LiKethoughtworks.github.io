@@ -4,7 +4,7 @@
   <title><![CDATA[Like's Blog]]></title>
   <link href="http://LiKethoughtworks.github.io/atom.xml" rel="self"/>
   <link href="http://LiKethoughtworks.github.io/"/>
-  <updated>2014-01-05T14:56:38+08:00</updated>
+  <updated>2014-01-05T15:17:09+08:00</updated>
   <id>http://LiKethoughtworks.github.io/</id>
   <author>
     <name><![CDATA[LiKe]]></name>
@@ -12,5 +12,62 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[ASP.NET 中如何在客户端获得正确的 URL]]></title>
+    <link href="http://LiKethoughtworks.github.io/blog/2014/01/05/how-to-get-url-from-client-in-aspnet/"/>
+    <updated>2014-01-05T15:06:11+08:00</updated>
+    <id>http://LiKethoughtworks.github.io/blog/2014/01/05/how-to-get-url-from-client-in-aspnet</id>
+    <content type="html"><![CDATA[<h2>可以使用 window.location</h2>
+
+<p><code>window.location</code> 的定义是这样的：</p>
+
+<ul>
+<li>host：host 的名称。包含端口号，不带 Scheme(<code>http://</code>, <code>https://</code>)。例如 <code>localhost:8080</code>，<code>www.taobao.com</code></li>
+<li>hostname：host 的名称，不包含端口号。例如 <code>localhost</code></li>
+<li>port：端口号，如果为 &lsquo;&rsquo; 则为 <code>80</code></li>
+<li>href：定义上说需要返回完整的 URL，但是 <a href="http://www.w3schools.com/jsref/obj_location.asp">W3School</a> 上又提到可能是相对路径，因此慎用。</li>
+<li>protocol：采用的协议，例如 <code>http:</code>，<code>https:</code></li>
+</ul>
+
+
+<p>其他属性省略。因此使用 <code>window.location</code> 我们可以得到网站的根路径：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">+</span> <span class="s1">&#39;//&#39;</span> <span class="o">+</span> <span class="nx">location</span><span class="p">.</span><span class="nx">host</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>那么这个 Web 应用的相对地址就可以使用以下方法获得：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">getBaseUrl</span><span class="p">(</span><span class="nx">relativePath</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">+</span> <span class="s1">&#39;//&#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">relativePath</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这种做法对于将应用程序部署到网站根域下的情况是比较适合的。</p>
+
+<h2>使用服务端和前端结合的方法</h2>
+
+<p>在通用的 Layout 页面上插入一段 Javascript，利用服务端后台生成正确的 Application Root URL。例如，在 ASP.NET MVC 的 _Layout.cshtml 中插入：</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">function</span> <span class="nx">getBaseUrl</span><span class="p">(</span><span class="nx">relativePath</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">protocol</span> <span class="o">+</span> <span class="s1">&#39;//&#39;</span> <span class="o">+</span> <span class="nb">window</span><span class="p">.</span><span class="nx">location</span><span class="p">.</span><span class="nx">host</span> <span class="o">+</span> <span class="s1">&#39;@Url.Content(&quot;~&quot;)&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nx">relativePath</span> <span class="o">?</span> <span class="nx">baseUrl</span> <span class="o">+</span> <span class="nx">relativePath</span> <span class="o">:</span> <span class="nx">baseUrl</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>这样在所有后续页面上我们就可以稳妥的使用 <code>getBaseUrl()</code> 函数来获得正确的绝对 URL。这和部署是不相关的。</p>
+]]></content>
+  </entry>
   
 </feed>

@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Like's Blog</title>
+  <title>ASP.NET 中如何在客户端获得正确的 URL - Like's Blog</title>
   <meta name="author" content="LiKe">
 
   
@@ -19,7 +19,7 @@ hostname：host 的名称， &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://LiKethoughtworks.github.io">
+  <link rel="canonical" href="http://LiKethoughtworks.github.io/blog/2014/01/05/how-to-get-url-from-client-in-aspnet">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Like's Blog" type="application/atom+xml">
@@ -64,15 +64,12 @@ hostname：host 的名称， &hellip;">
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/01/05/how-to-get-url-from-client-in-aspnet/">ASP.NET 中如何在客户端获得正确的 URL</a></h1>
+      <h1 class="entry-title">ASP.NET 中如何在客户端获得正确的 URL</h1>
     
     
       <p class="meta">
@@ -95,7 +92,7 @@ hostname：host 的名称， &hellip;">
   </header>
 
 
-  <div class="entry-content"><h2>可以使用 window.location</h2>
+<div class="entry-content"><h2>可以使用 window.location</h2>
 
 <p><code>window.location</code> 的定义是这样的：</p>
 
@@ -145,18 +142,57 @@ hostname：host 的名称， &hellip;">
 
 <p>这样在所有后续页面上我们就可以稳妥的使用 <code>getBaseUrl()</code> 函数来获得正确的绝对 URL。这和部署是不相关的。</p>
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">LiKe</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2014-01-05T15:06:11+08:00" pubdate data-updated="true">Jan 5<span>th</span>, 2014</time>
+      
+
+<span class="categories">
   
-  <div class="pagination">
+    <a class='category' href='/blog/categories/aspnet/'>aspnet</a>, <a class='category' href='/blog/categories/url/'>url</a>
+  
+</span>
+
+
+    </p>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://LiKethoughtworks.github.io/blog/2014/01/05/how-to-get-url-from-client-in-aspnet/" data-via="" data-counturl="http://LiKethoughtworks.github.io/blog/2014/01/05/how-to-get-url-from-client-in-aspnet/" >Tweet</a>
+  
+  
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -176,6 +212,7 @@ hostname：host 的名称， &hellip;">
 
   
 </aside>
+
 
     </div>
   </div>
