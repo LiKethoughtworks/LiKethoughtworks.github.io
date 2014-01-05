@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Like's Blog]]></title>
+  <link href="http://LiKethoughtworks.github.io/atom.xml" rel="self"/>
+  <link href="http://LiKethoughtworks.github.io/"/>
+  <updated>2014-01-05T14:56:38+08:00</updated>
+  <id>http://LiKethoughtworks.github.io/</id>
+  <author>
+    <name><![CDATA[LiKe]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
